@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Col, Container, Form, Jumbotron, Row } from 'react-bootstrap';
 import './Calculadora.css';
 
 const Calculadora = () => {
+  const [txtNumeros, setTxtNumeros] = useState<string>('0');
+
+  const adicionarNumero = (numero: string) => {
+    setTxtNumeros(txtNumeros + numero);
+  }
+
+  const definirOperacao = (op: string) => {
+    setTxtNumeros(op);
+  };
+
   return (
     <Jumbotron
       style={
@@ -25,58 +35,60 @@ const Calculadora = () => {
               type="text"
               name="txtNumeros"
               className="text-right"
-              readOnly={true} />
+              readOnly={true}
+              value={txtNumeros}
+            />
           </Col>
         </Row>
 
         <Row>
           <Col>
-            <Button variant="light">7</Button>
+            <Button onClick={() => adicionarNumero('7')} variant="light">7</Button>
           </Col>
           <Col>
-            <Button variant="light">8</Button>
+            <Button onClick={() => adicionarNumero('8')} variant="light">8</Button>
           </Col>
           <Col>
-            <Button variant="light">9</Button>
+            <Button onClick={() => adicionarNumero('9')} variant="light">9</Button>
           </Col>
           <Col>
-            <Button variant="warning">/</Button>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <Button variant="light">4</Button>
-          </Col>
-          <Col>
-            <Button variant="light">5</Button>
-          </Col>
-          <Col>
-            <Button variant="light">6</Button>
-          </Col>
-          <Col>
-            <Button variant="warning">*</Button>
+            <Button onClick={() => definirOperacao('/')} variant="warning">/</Button>
           </Col>
         </Row>
 
         <Row>
           <Col>
-            <Button variant="light">1</Button>
+            <Button onClick={() => adicionarNumero('4')} variant="light">4</Button>
           </Col>
           <Col>
-            <Button variant="light">2</Button>
+            <Button onClick={() => adicionarNumero('5')} variant="light">5</Button>
           </Col>
           <Col>
-            <Button variant="light">3</Button>
+            <Button onClick={() => adicionarNumero('6')} variant="light">6</Button>
           </Col>
           <Col>
-            <Button variant="warning">-</Button>
+            <Button onClick={() => definirOperacao('*')} variant="warning">*</Button>
           </Col>
         </Row>
 
         <Row>
           <Col>
-            <Button variant="light">0</Button>
+            <Button onClick={() => adicionarNumero('1')} variant="light">1</Button>
+          </Col>
+          <Col>
+            <Button onClick={() => adicionarNumero('2')} variant="light">2</Button>
+          </Col>
+          <Col>
+            <Button onClick={() => adicionarNumero('3')} variant="light">3</Button>
+          </Col>
+          <Col>
+            <Button onClick={() => definirOperacao('-')} variant="warning">-</Button>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Button onClick={() => adicionarNumero('0')} variant="light">0</Button>
           </Col>
           <Col>
             <Button variant="light">.</Button>
@@ -85,7 +97,7 @@ const Calculadora = () => {
             <Button variant="success">=</Button>
           </Col>
           <Col>
-            <Button variant="warning">+</Button>
+            <Button onClick={() => definirOperacao('+')} variant="warning">+</Button>
           </Col>
         </Row>
       </Container>
