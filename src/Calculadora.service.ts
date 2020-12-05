@@ -1,4 +1,4 @@
-function CalculadoraService() {
+function CalculadoraService(): any[] {
   const SOMA = '+';
   const SUBTRACAO = '-';
   const MULTIPLICACAO = '*';
@@ -18,7 +18,7 @@ function CalculadoraService() {
         resultado = a * b;
         break;
       case DIVISAO:
-        resultado = a - b;
+        resultado = a / b;
         break;
       default:
         resultado = 0;
@@ -27,8 +27,28 @@ function CalculadoraService() {
     return resultado;
   }
 
+  function concatenarNumero(numAtual: string, numConcat: string) {
+    // Caso contenha apenas '0' ou null, reinicia o valor
+    if (numAtual === '0' || numAtual === null) {
+      numAtual = '';
+    };
+
+    // Se o primeiro digito for '.', concatena um '0' antes do ponto
+    if (numConcat === '.' && numAtual === '') {
+      return '0.';
+    };
+
+    // Caso '.' digitado e já contenha um ponto, apenas retornar
+    if (numConcat === '.' && numAtual.indexOf('.') > -1) {
+      return numAtual;
+    }
+
+    return numAtual + numConcat;
+  }
+
   return [
     calcular,
+    concatenarNumero,
     SOMA,
     SUBTRACAO,
     MULTIPLICACAO,

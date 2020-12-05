@@ -6,10 +6,11 @@ import CalculadoraService from './Calculadora.service';
 describe('Teste do CalculadoraService', () => {
   const [
     calcular,
+    concatenarNumero,
     SOMA,
     SUBTRACAO,
-    DIVISAO,
-    MULTIPLICACAO
+    MULTIPLICACAO,
+    DIVISAO
   ] = CalculadoraService();
 
   it('Deve garantir que 1 + 4 = 5.', () => {
