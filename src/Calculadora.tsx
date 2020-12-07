@@ -4,9 +4,20 @@ import './Calculadora.css';
 
 const Calculadora = () => {
   const [txtNumeros, setTxtNumeros] = useState<string>('0');
+  const [numero1, setNumero1] = useState<string>('0');
+  const [numero2, setNumero2] = useState<string>('');
+  const [operacao, setOperacao] = useState<string>('');
 
   const adicionarNumero = (numero: string) => {
-    setTxtNumeros(txtNumeros + numero);
+    let resultado = '';
+
+    if (operacao === '') {
+
+    } else {
+
+    }
+
+    setTxtNumeros(resultado);
   }
 
   const definirOperacao = (op: string) => {
@@ -28,7 +39,7 @@ const Calculadora = () => {
       <Container>
         <Row>
           <Col xs="3">
-            <Button variant="danger">C</Button>
+            <Button onClick={() => setTxtNumeros('0')} variant="danger">C</Button>
           </Col>
           <Col xs="9">
             <Form.Control
@@ -91,7 +102,7 @@ const Calculadora = () => {
             <Button onClick={() => adicionarNumero('0')} variant="light">0</Button>
           </Col>
           <Col>
-            <Button variant="light">.</Button>
+            <Button  onClick={() => adicionarNumero('.')} variant="light">.</Button>
           </Col>
           <Col>
             <Button variant="success">=</Button>
