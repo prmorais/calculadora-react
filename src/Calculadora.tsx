@@ -5,11 +5,11 @@ import './Calculadora.css';
 import CalculadoraService from './Calculadora.service';
 const [
   calcular,
-  concatenarNumero
-  // SOMA,
-  // SUBTRACAO,
-  // MULTIPLICACAO,
-  // DIVISAO
+  concatenarNumero,
+  SOMA,
+  SUBTRACAO,
+  MULTIPLICACAO,
+  DIVISAO
 ] = CalculadoraService();
 
 const Calculadora = () => {
@@ -86,6 +86,7 @@ const Calculadora = () => {
           </Col>
           <Col xs="9">
             <Form.Control
+              data-testid="txtNumeros"
               type="text"
               name="txtNumeros"
               className="text-right"
@@ -106,7 +107,7 @@ const Calculadora = () => {
             <Button onClick={() => adicionarNumero('9')} variant="light">9</Button>
           </Col>
           <Col>
-            <Button onClick={() => definirOperacao('/')} variant="warning">/</Button>
+            <Button onClick={() => definirOperacao(DIVISAO)} variant="warning">/</Button>
           </Col>
         </Row>
 
@@ -121,7 +122,7 @@ const Calculadora = () => {
             <Button onClick={() => adicionarNumero('6')} variant="light">6</Button>
           </Col>
           <Col>
-            <Button onClick={() => definirOperacao('*')} variant="warning">*</Button>
+            <Button onClick={() => definirOperacao(MULTIPLICACAO)} variant="warning">*</Button>
           </Col>
         </Row>
 
@@ -136,7 +137,7 @@ const Calculadora = () => {
             <Button onClick={() => adicionarNumero('3')} variant="light">3</Button>
           </Col>
           <Col>
-            <Button onClick={() => definirOperacao('-')} variant="warning">-</Button>
+            <Button onClick={() => definirOperacao(SUBTRACAO)} variant="warning">-</Button>
           </Col>
         </Row>
 
@@ -151,7 +152,7 @@ const Calculadora = () => {
             <Button onClick={acaoCalcular} variant="success">=</Button>
           </Col>
           <Col>
-            <Button onClick={() => definirOperacao('+')} variant="warning">+</Button>
+            <Button onClick={() => definirOperacao(SOMA)} variant="warning">+</Button>
           </Col>
         </Row>
       </Container>
